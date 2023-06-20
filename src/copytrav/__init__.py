@@ -1,13 +1,22 @@
-"""Package / module functions."""
+"""Copytrav provides the ability to create copies of python package data on disk."""
 import importlib.resources
 from importlib.resources.abc import Traversable
 import os
 from pathlib import Path
 
-def copy(module: str, dst: Path, pth: Path=None):
+__all__ = ['copy']
+
+def copy(module: str, dst: Path, pth: Path=None) -> None:
     """Given a module in the form: 'module.sub_module', copy all items at the
     pth to the destination, dst. If no path given, the module from the root
     level is copied.
+
+    Args:
+        module: The path to (typically) the namespace module containing data
+        in the example form "mymodule.data".
+        dst: Where you want the items copied to. Top-level dir is copied.
+        pth: Path in the example form
+        "item_at_module_root/level/directory_or_file".
     """
     def copy_aux(current_level: Traversable, current_path: Path):
         new_path = os.path.join(current_path, current_level.name)
