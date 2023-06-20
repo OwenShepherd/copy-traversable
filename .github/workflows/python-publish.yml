@@ -49,6 +49,4 @@ jobs:
         python -m pip install --upgrade build
         python -m pip install --upgrade twine
         pip install build
-    - name: Upload the Distribution Archives
-      run: |
         python -m twine upload --repository pypi dist/* --username __token__ --password ${{ secrets.PYPI_PUBLISH }}
