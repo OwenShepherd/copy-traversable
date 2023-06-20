@@ -1,13 +1,17 @@
 .. copytrav documentation master file, created by
-   sphinx-quickstart on Mon Jun 19 14:51:49 2023.
+   sphinx-quickstart on Tue Jun 20 13:51:19 2023.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-copytrav's documentation
-====================================
+.. mdinclude:: ../README.md
+
+API Reference
+=============
 
 .. toctree::
-   modules
+   :maxdepth: 1
+
+   copytrav
 
 
 Indices and tables

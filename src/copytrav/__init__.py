@@ -3,20 +3,25 @@ import importlib.resources
 from importlib.resources.abc import Traversable
 import os
 from pathlib import Path
+import tempfile
+from typing import Union
 
-__all__ = ['copy']
-
-def copy(module: str, dst: Path, pth: Path=None) -> None:
+def copy(module: str, pth: Path=None, dst: Path=None) -> Path:
     """Given a module in the form: 'module.sub_module', copy all items at the
     pth to the destination, dst. If no path given, the module from the root
     level is copied.
 
     Args:
         module: The path to (typically) the namespace module containing data
-        in the example form "mymodule.data".
-        dst: Where you want the items copied to. Top-level dir is copied.
+            in the example form "mymodule.data".
+        dst: Where you want the items copied to. Top-level dir is copied. If no
+            dst is given, a temporary directory will be created.
         pth: Path in the example form
-        "item_at_module_root/level/directory_or_file".
+            "item_at_module_root/level/directory_or_file".
+
+    Returns:
+        The path to the directory to which items were copied. If dst is given,
+        this will simply be dst.
     """
     def copy_aux(current_level: Traversable, current_path: Path):
         new_path = os.path.join(current_path, current_level.name)
@@ -32,4 +37,8 @@ def copy(module: str, dst: Path, pth: Path=None) -> None:
         for_split = pth.split(os.path.sep)
         for level in for_split:
             start = start.joinpath(level)
+    if not dst:
+        dst = tempfile.mkdtemp(prefix=module.replace(".", "_"))
     copy_aux(start, dst)
+
+    return dst

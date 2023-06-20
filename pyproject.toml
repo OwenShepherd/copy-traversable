@@ -13,7 +13,9 @@ classifiers = [
 
 [project.optional-dependencies]
 dev = [
-    "sphinx"
+    "sphinx",
+    "sphinx-autodoc-typehints",
+    "sphinx-mdinclude",
 ]
 
 [project.urls]
