@@ -1,6 +1,6 @@
 [project]
 name = "copytrav"
-version = "0.0.3"
+version = "0.0.4"
 authors = [
     { name="Owen Shepherd", email="oshepengineering@gmail.com" },
 ]
@@ -21,6 +21,7 @@ dev = [
 
 [project.urls]
 "Homepage" = "https://github.com/OwenShepherd/copytrav"
+"Documentation" = "https://OwenShepherd.github.io/copytrav"
 "Bug Tracker" = "https://github.com/OwenShepherd/copytrav/issues"
 
 [build-system]
