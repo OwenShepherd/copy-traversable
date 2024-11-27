@@ -33,6 +33,11 @@ class TestCanCopy(unittest.TestCase):
         one = os.path.join(self.tdir, "one")
         self.assertTrue(os.path.exists(os.path.join(one, "data1.rst")))
         self.assertTrue(os.path.exists(os.path.join(one, "data1.txt")))
+    def test_copy_notop(self):
+        """Tests the notop ability."""
+        copy("copytrav.data", "one", self.tdir, True)
+        self.assertTrue(os.path.exists(os.path.join(self.tdir, "data1.rst")))
+        self.assertTrue(os.path.exists(os.path.join(self.tdir, "data1.txt")))
     def test_copy_two(self):
         """Tests copying just data/two"""
         copy("copytrav.data", "two", self.tdir)
